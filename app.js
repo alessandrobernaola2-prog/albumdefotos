@@ -1,5 +1,4 @@
-// REEMPLAZA CON LA URL QUE COPIASTE AL IMPLEMENTAR TU GOOGLE APPS SCRIPT
-const WEB_APP_URL = "TU_URL_DE_APPS_SCRIPT_AQUÍ";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzLcuofZPN-hKL--9lM6DyMxeDrqnjeA07EiKzbM-iJ1KgrBnNULiRWesUB5BKxs0Mq/exec";
 
 const fileInput = document.getElementById('fileInput');
 const statusMessage = document.getElementById('statusMessage');
