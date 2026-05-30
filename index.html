@@ -5,26 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galería Compartida</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="app-container">
-        <header>
-            <h1>Nuestras Fotos</h1>
-            <p>Sube tus imágenes en máxima calidad original</p>
-        </header>
-
-        <main>
-            <div class="upload-zone" id="dropZone">
-                <label for="fileInput" class="upload-label">
-                    <span class="icon">📸</span>
-                    <span>Seleccionar foto (MÁXIMA CALIDAD)</span>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Nuestros Momentos</h1>
+            <p>Sube, mira y descarga fotos en máxima calidad</p>
+            
+            <div class="upload-zone">
+                <label for="fileInput" class="btn-primary">
+                    <i class="fas fa-camera"></i> Subir Foto
                 </label>
                 <input type="file" id="fileInput" accept="image/*,image/heic" style="display: none;">
             </div>
-
             <div id="statusMessage" class="status-hidden"></div>
-        </main>
-    </div>
+        </div>
+    </header>
+
+    <main class="gallery-container">
+        <h2>Galería</h2>
+        <div id="loading" class="loading">Cargando fotos...</div>
+        <div class="grid" id="photoGrid">
+            </div>
+    </main>
+
     <script src="app.js"></script>
 </body>
 </html>
