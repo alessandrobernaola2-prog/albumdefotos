@@ -31,12 +31,13 @@
             padding-bottom: 60px;
         }
 
-        /* PORTADA */
+        /* PORTADA MODIFICADA */
         .hero {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.65)), url('portada.jpeg') center/cover no-repeat;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.65)), url('portada.jpeg') center/cover no-repeat;
             color: white;
             text-align: center;
-            padding: 80px 20px 60px;
+            /* Se redujo el padding superior de 80px a 40px para subir los nombres */
+            padding: 40px 20px 50px;
             border-bottom-left-radius: var(--radius-large);
             border-bottom-right-radius: var(--radius-large);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -50,18 +51,11 @@
             color: white;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 15px;
-            background: rgba(0, 0, 0, 0.4);
+            margin-bottom: 35px; /* Separación respecto al botón */
+            background: rgba(0, 0, 0, 0.45);
             padding: 8px 18px;
             border-radius: 20px;
             backdrop-filter: blur(5px);
-        }
-
-        .hero h1 {
-            font-size: 2.4rem;
-            font-weight: 800;
-            margin-bottom: 25px;
-            letter-spacing: -0.5px;
         }
 
         .upload-wrapper {
@@ -123,7 +117,6 @@
             gap: 14px;
         }
 
-        /* CONTENEDORES DE FOTOS CORREGIDOS */
         .photo-card {
             background: var(--card-bg);
             border-radius: var(--radius-small);
@@ -136,7 +129,7 @@
 
         .photo-image-container {
             width: 100%;
-            padding-top: 100%; /* Mantiene el contenedor cuadrado */
+            padding-top: 100%;
             position: relative;
             background: #e9ecef;
             overflow: hidden;
@@ -156,7 +149,7 @@
             padding: 10px;
             background: var(--card-bg);
             width: 100%;
-            z-index: 10; /* Asegura que el botón esté por encima de cualquier capa */
+            z-index: 10;
         }
 
         .btn-download {
@@ -181,8 +174,7 @@
 <body>
 
     <header class="hero">
-        <div class="names">Romer • Luhana • Oriana • Allison • Amira</div>
-        <h1>Álbum</h1>
+        <div class="names">Romer • Luhana • Oriana • Allison • Amira • Gustavo</div>
         
         <div class="upload-wrapper">
             <label for="fileInput" class="btn-upload">
