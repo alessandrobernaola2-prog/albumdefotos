@@ -12,7 +12,7 @@
             --card-bg: #ffffff;
             --text-dark: #1a1a1e;
             --text-light: #6c757d;
-            --accent: #212529;
+            --accent: #212529; /* Color oscuro para los botones */
             --radius-large: 24px;
             --radius-small: 14px;
         }
@@ -31,16 +31,18 @@
             padding-bottom: 60px;
         }
 
-        /* PORTADA ADAPTABLE */
+        /* PORTADA CON ALTURA FIJA Y TEXTO ABAJO */
         .hero {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.65)), url('portada.jpeg') center/cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 40px 20px 50px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7)), url('portada.jpeg') center/cover no-repeat;
+            /* Usamos flexbox para empujar el contenido hacia abajo */
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 250px; /* Altura ideal para celulares */
             border-bottom-left-radius: var(--radius-large);
             border-bottom-right-radius: var(--radius-large);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .names {
@@ -50,13 +52,23 @@
             color: white;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 30px;
-            background: rgba(0, 0, 0, 0.45);
+            margin-bottom: 20px; /* Separación desde el borde inferior de la imagen */
+            background: rgba(0, 0, 0, 0.5);
             padding: 8px 16px;
             border-radius: 20px;
             backdrop-filter: blur(5px);
             max-width: 90%;
             word-wrap: break-word;
+            text-align: center;
+        }
+
+        /* SECCIÓN DEL BOTÓN (AHORA FUERA DE LA PORTADA) */
+        .upload-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 0 20px;
         }
 
         .upload-wrapper {
@@ -64,11 +76,12 @@
             flex-direction: column;
             align-items: center;
             gap: 15px;
+            width: 100%;
         }
 
         .btn-upload {
-            background: #ffffff;
-            color: var(--text-dark);
+            background: var(--accent); /* Botón oscuro para resaltar en el fondo claro */
+            color: #ffffff;
             padding: 14px 35px;
             border-radius: 30px;
             font-weight: 700;
@@ -82,7 +95,11 @@
             border: none;
         }
 
-        /* GALERÍA BASE (MÓVIL) */
+        .btn-upload:active {
+            transform: scale(0.96);
+        }
+
+        /* GALERÍA */
         .gallery-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -92,7 +109,7 @@
         .loading {
             text-align: center;
             color: var(--text-light);
-            padding: 40px;
+            padding: 20px;
             font-weight: 500;
         }
 
@@ -156,17 +173,16 @@
             border-radius: 12px;
             display: none;
             font-weight: 600;
+            text-align: center;
         }
-        .status-message.info { display: block; background: rgba(0,0,0,0.6); color: white; backdrop-filter: blur(5px); }
+        .status-message.info { display: block; background: #e9ecef; color: var(--text-dark); }
         .status-message.success { display: block; background: #e8f5e9; color: #2e7d32; }
         .status-message.error { display: block; background: #ffebee; color: #c62828; }
 
-        /* ===================================================
-           REDISEÑO EXCLUSIVO PARA PC (PANTALLAS GRANDES)
-           =================================================== */
+        /* REDISEÑO EXCLUSIVO PARA PC */
         @media (min-width: 768px) {
             .hero {
-                padding: 80px 20px 70px;
+                height: 350px; /* Portada más alta en computadora */
                 border-bottom-left-radius: 40px;
                 border-bottom-right-radius: 40px;
                 margin-bottom: 40px;
@@ -176,17 +192,15 @@
                 font-size: 0.9rem;
                 letter-spacing: 3px;
                 padding: 10px 24px;
-                margin-bottom: 40px;
+                margin-bottom: 30px;
             }
 
             .btn-upload:hover {
                 transform: translateY(-2px);
                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-                background: #f8fafc;
             }
 
             .grid {
-                /* Las fotos se hacen más grandes y majestuosas en PC */
                 grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
                 gap: 24px;
             }
@@ -217,7 +231,9 @@
 
     <header class="hero">
         <div class="names">Romer • Luhana • Oriana • Allison • Amira • Gustavo</div>
-        
+    </header>
+
+    <section class="upload-section">
         <div class="upload-wrapper">
             <label for="fileInput" class="btn-upload">
                 <i class="fas fa-plus"></i> Añadir Foto
@@ -225,7 +241,7 @@
             <input type="file" id="fileInput" accept="image/*,image/heic" style="display: none;">
             <div id="statusMessage" class="status-message"></div>
         </div>
-    </header>
+    </section>
 
     <main class="gallery-container">
         <div id="loading" class="loading">
