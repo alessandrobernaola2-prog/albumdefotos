@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Galería</title>
+    <title>Galería Compartida</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -31,12 +31,11 @@
             padding-bottom: 60px;
         }
 
-        /* PORTADA MODIFICADA */
+        /* PORTADA ADAPTABLE */
         .hero {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.65)), url('portada.jpeg') center/cover no-repeat;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.65)), url('portada.jpeg') center/cover no-repeat;
             color: white;
             text-align: center;
-            /* Se redujo el padding superior de 80px a 40px para subir los nombres */
             padding: 40px 20px 50px;
             border-bottom-left-radius: var(--radius-large);
             border-bottom-right-radius: var(--radius-large);
@@ -46,16 +45,18 @@
 
         .names {
             display: inline-block;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: white;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 35px; /* Separación respecto al botón */
+            margin-bottom: 30px;
             background: rgba(0, 0, 0, 0.45);
-            padding: 8px 18px;
+            padding: 8px 16px;
             border-radius: 20px;
             backdrop-filter: blur(5px);
+            max-width: 90%;
+            word-wrap: break-word;
         }
 
         .upload-wrapper {
@@ -77,29 +78,13 @@
             gap: 10px;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-            transition: transform 0.2s;
+            transition: all 0.2s ease;
             border: none;
         }
 
-        .btn-upload:active {
-            transform: scale(0.96);
-        }
-
-        /* MENSAJES */
-        .status-message {
-            font-size: 0.9rem;
-            padding: 10px 20px;
-            border-radius: 12px;
-            display: none;
-            font-weight: 600;
-        }
-        .status-message.info { display: block; background: rgba(0,0,0,0.6); color: white; backdrop-filter: blur(5px); }
-        .status-message.success { display: block; background: #e8f5e9; color: #2e7d32; }
-        .status-message.error { display: block; background: #ffebee; color: #c62828; }
-
-        /* GALERÍA */
+        /* GALERÍA BASE (MÓVIL) */
         .gallery-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 16px;
         }
@@ -162,12 +147,69 @@
             font-weight: 700;
             display: block;
             text-align: center;
-            transition: background 0.2s;
             border: 1px solid #e9ecef;
         }
-        
-        .btn-download:active {
-            background: #e2e8f0;
+
+        .status-message {
+            font-size: 0.9rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            display: none;
+            font-weight: 600;
+        }
+        .status-message.info { display: block; background: rgba(0,0,0,0.6); color: white; backdrop-filter: blur(5px); }
+        .status-message.success { display: block; background: #e8f5e9; color: #2e7d32; }
+        .status-message.error { display: block; background: #ffebee; color: #c62828; }
+
+        /* ===================================================
+           REDISEÑO EXCLUSIVO PARA PC (PANTALLAS GRANDES)
+           =================================================== */
+        @media (min-width: 768px) {
+            .hero {
+                padding: 80px 20px 70px;
+                border-bottom-left-radius: 40px;
+                border-bottom-right-radius: 40px;
+                margin-bottom: 40px;
+            }
+
+            .names {
+                font-size: 0.9rem;
+                letter-spacing: 3px;
+                padding: 10px 24px;
+                margin-bottom: 40px;
+            }
+
+            .btn-upload:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+                background: #f8fafc;
+            }
+
+            .grid {
+                /* Las fotos se hacen más grandes y majestuosas en PC */
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 24px;
+            }
+
+            .photo-card {
+                border-radius: 18px;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+
+            .photo-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+            }
+
+            .btn-download {
+                transition: all 0.2s ease;
+            }
+
+            .btn-download:hover {
+                background: var(--accent);
+                color: #ffffff;
+                border-color: var(--accent);
+            }
         }
     </style>
 </head>
