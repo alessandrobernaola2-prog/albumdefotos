@@ -3,26 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nuestra Galería</title>
+    <title>Nuestras Fotos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            /* Paleta minimalista y moderna */
-            --bg-main: #f8f9fa;
+            --bg-main: #f4f4f9;
             --card-bg: #ffffff;
-            --text-dark: #212529;
-            --text-light: #6c757d;
-            --accent-color: #212529; /* Un tono oscuro y elegante para los botones */
-            --radius-large: 24px;
-            --radius-small: 12px;
+            --text-dark: #1e1e24;
+            --accent: #2b2d42;
+            --radius-large: 30px;
+            --radius-small: 16px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -32,124 +30,104 @@
             padding-bottom: 60px;
         }
 
-        /* PORTADA MINIMALISTA */
+        /* PORTADA ARREGLADA Y SIN TEXTOS FORMALES */
         .hero {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('portada.jpg') center/cover no-repeat;
+            /* ¡CORREGIDO A .jpeg! */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('portada.jpeg') center/cover no-repeat;
             color: white;
             text-align: center;
-            padding: 80px 20px 60px;
+            padding: 80px 20px 50px;
             border-bottom-left-radius: var(--radius-large);
             border-bottom-right-radius: var(--radius-large);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
 
         .names {
             display: inline-block;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: white;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 20px;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 8px 16px;
+            margin-bottom: 25px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 18px;
             border-radius: 20px;
             backdrop-filter: blur(5px);
         }
 
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        /* BOTÓN DE SUBIDA (Estilo limpio) */
         .upload-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 15px;
-            margin-top: 20px;
         }
 
         .btn-upload {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             color: var(--text-dark);
-            padding: 14px 32px;
+            padding: 14px 35px;
             border-radius: 30px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.05rem;
             display: inline-flex;
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
             border: none;
         }
 
         .btn-upload:active {
-            transform: scale(0.97);
-            background: white;
+            transform: scale(0.95);
         }
 
         /* MENSAJES */
         .status-message {
             font-size: 0.9rem;
-            padding: 12px 20px;
-            border-radius: var(--radius-small);
+            padding: 10px 20px;
+            border-radius: 12px;
             display: none;
-            font-weight: 500;
-            margin-top: 10px;
+            font-weight: 600;
         }
         .status-message.info { display: block; background: rgba(0,0,0,0.5); color: white; backdrop-filter: blur(5px); }
         .status-message.success { display: block; background: #e8f5e9; color: #2e7d32; }
         .status-message.error { display: block; background: #ffebee; color: #c62828; }
 
-        /* GALERÍA */
+        /* GALERÍA ARREGLADA */
         .gallery-container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        .section-title {
-            text-align: left;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            color: var(--text-dark);
-            padding-left: 5px;
-        }
-
         .loading {
             text-align: center;
-            color: var(--text-light);
-            padding: 40px;
+            color: #8d99ae;
+            padding: 30px;
             font-weight: 500;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
         }
 
-        /* FOTOS (Estilo iOS) */
         .photo-card {
             background: var(--card-bg);
             border-radius: var(--radius-small);
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
         }
 
         .photo-image-container {
             width: 100%;
-            padding-top: 100%; /* Cuadrado perfecto */
+            padding-top: 100%;
             position: relative;
             background: #e9ecef;
         }
@@ -163,29 +141,41 @@
             object-fit: cover;
         }
 
+        /* BOTÓN DE DESCARGA SIN APLASTAR */
         .photo-actions {
-            padding: 10px;
+            padding: 12px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
             background: var(--card-bg);
+            align-items: center;
+        }
+        
+        .photo-name {
+            font-size: 0.75rem;
+            color: #8d99ae;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
         }
 
         .btn-download {
-            background: var(--bg-main);
-            color: var(--accent-color);
+            background: #edf2f4;
+            color: var(--accent);
             text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 16px;
+            padding: 10px 15px;
+            border-radius: 12px;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 700;
             width: 100%;
             text-align: center;
             transition: background 0.2s;
-            border: 1px solid #e9ecef;
         }
         
         .btn-download:active {
-            background: #e9ecef;
+            background: #d90429;
+            color: white;
         }
     </style>
 </head>
@@ -194,10 +184,9 @@
     <header class="hero">
         <div class="names">Romer • Luhana • Oriana • Allison • Amira</div>
         
-        <h1>Nuestra Galería</h1>
         <div class="upload-wrapper">
             <label for="fileInput" class="btn-upload">
-                <i class="fas fa-plus"></i> Añadir Foto
+                <i class="fas fa-camera"></i> Subir Foto
             </label>
             <input type="file" id="fileInput" accept="image/*,image/heic" style="display: none;">
             <div id="statusMessage" class="status-message"></div>
@@ -205,14 +194,11 @@
     </header>
 
     <main class="gallery-container">
-        <h2 class="section-title">Fotos del grupo</h2>
-        
         <div id="loading" class="loading">
-            <i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Cargando...
+            <i class="fas fa-spinner fa-spin"></i> Cargando fotos...
         </div>
         
-        <div class="grid" id="photoGrid">
-            </div>
+        <div class="grid" id="photoGrid"></div>
     </main>
 
     <script src="app.js"></script>
